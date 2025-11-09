@@ -122,7 +122,7 @@ bookingForm?.addEventListener('submit', async e => {
   `);
 
   try {
-    const response = await fetch('https://formspree.io/f/xvgdprkk', {
+    const response = await fetch('https://formspree.io/f/mjkjbabp', {
       method: 'POST',
       body: formData,
       headers: { 'Accept': 'application/json' }
