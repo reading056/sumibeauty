@@ -16,6 +16,7 @@
   --charcoal: #2F2F2F;
 }
 
+/* Navbar Styles */
 .navbar {
   background: var(--black);
   height: 80px;
@@ -305,25 +306,28 @@
   line-height: 1.6;
 }
 
+/* Main Book Now Button - Fixed */
 .main__btn {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   background: var(--dark-charcoal);
-  padding: 20px 60px;
+  padding: 15px 40px;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   margin-top: 2rem;
   cursor: pointer;
   position: relative;
-  transition: all 0.35s;
+  transition: all 0.35s ease;
   outline: none;
   color: var(--cream);
   font-weight: 600;
   border: 2px solid var(--gold);
+  text-decoration: none;
+  display: inline-block;
 }
 
 .main__btn a {
   color: var(--cream);
-  text-decoration: none !important; /* force removal of underline */
+  text-decoration: none !important;
   display: inline-block;
   width: 100%;
   height: 100%;
@@ -331,12 +335,11 @@
   cursor: pointer;
 }
 
-
 .main__btn:hover {
   background: var(--gold);
   color: var(--black);
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
 }
 
 .main__img--container {
@@ -669,58 +672,73 @@
   }
 }
 
-/* Booking Section */
+/* Booking Section - Fixed */
 .booking {
   background: var(--cream);
   padding: 8rem 0;
+  text-align: center;
 }
 
 .booking__container {
-  max-width: 800px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 0 20px;
-  text-align: center;
 }
 
 .booking h2 {
   color: var(--black);
-  margin-bottom: 3rem;
   font-size: 2.5rem;
-  font-weight: 300;
+  margin-bottom: 1rem;
+  font-weight: 600;
 }
 
-/* Auth Forms */
+.booking .subtext {
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+  color: var(--charcoal);
+  line-height: 1.6;
+}
+
+/* Auth Forms - Improved */
 .auth__forms {
   background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  padding: 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
   margin-bottom: 2rem;
+  border: 1px solid var(--light-gold);
 }
 
 .auth__tab {
   display: flex;
   margin-bottom: 2rem;
-  border-bottom: 2px solid var(--cream);
+  border-bottom: 2px solid var(--light-gold);
+  background: var(--cream);
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
 }
 
 .auth__tab-btn {
   flex: 1;
-  padding: 1rem;
+  padding: 1.2rem;
   background: none;
   border: none;
   font-size: 1.1rem;
   cursor: pointer;
+  font-weight: 500;
   transition: all 0.3s ease;
+  color: var(--charcoal);
 }
 
 .auth__tab-btn.active {
-  color: var(--gold);
-  border-bottom: 2px solid var(--gold);
+  background: var(--gold);
+  color: var(--black);
+  font-weight: 600;
 }
 
 .auth__form {
   display: none;
+  animation: fadeIn 0.5s ease;
 }
 
 .auth__form.active {
@@ -730,130 +748,213 @@
 .auth__form input {
   width: 100%;
   padding: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 1rem;
+  transition: all 0.3s ease;
+  background: var(--cream);
+}
+
+.auth__form input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
 }
 
 .auth__form button {
   width: 100%;
-  padding: 1rem;
-  background: var(--black);
+  padding: 1.2rem;
+  background: var(--dark-charcoal);
   color: var(--cream);
   border: 2px solid var(--gold);
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 1.1rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-weight: 600;
+  margin-top: 1rem;
 }
 
 .auth__form button:hover {
   background: var(--gold);
   color: var(--black);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
 }
 
-/* Booking Form */
+/* Booking Form - Improved */
 .booking__form {
   background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  padding: 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  display: none;
+  text-align: left;
+  border: 1px solid var(--light-gold);
+  animation: slideUp 0.5s ease;
+}
+
+.booking__form.active {
+  display: block;
 }
 
 .form__group {
-  margin-bottom: 1.5rem;
-  text-align: left;
+  margin-bottom: 1.8rem;
 }
 
 .form__group label {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.7rem;
   color: var(--black);
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 1.1rem;
 }
 
 .form__group input,
 .form__group select,
 .form__group textarea {
   width: 100%;
-  padding: 1rem;
+  padding: 1.2rem;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 1rem;
+  transition: all 0.3s ease;
+  background: var(--cream);
+  font-family: 'Kumbh Sans', sans-serif;
+}
+
+.form__group input:focus,
+.form__group select:focus,
+.form__group textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
 }
 
 .form__group textarea {
-  height: 100px;
+  height: 120px;
   resize: vertical;
 }
 
 .booking__form button {
   width: 100%;
-  padding: 1rem;
-  background: var(--black);
+  padding: 1.2rem;
+  background: var(--dark-charcoal);
   color: var(--cream);
   border: 2px solid var(--gold);
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 1.1rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-weight: 600;
+  margin-top: 1rem;
 }
 
 .booking__form button:hover {
   background: var(--gold);
   color: var(--black);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
 }
 
-/* User Dashboard */
+/* User Dashboard - Improved */
 .user__dashboard {
+  display: none;
   background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  padding: 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  text-align: left;
+  border: 1px solid var(--light-gold);
+  animation: fadeIn 0.5s ease;
+}
+
+.user__dashboard.active {
+  display: block;
+}
+
+.user__dashboard h3 {
+  margin-bottom: 1.5rem;
+  color: var(--black);
+  font-size: 1.8rem;
+  text-align: center;
 }
 
 .appointments__list {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .appointment__card {
   background: var(--cream);
   padding: 1.5rem;
-  margin-bottom: 1rem;
-  border-radius: 6px;
+  margin-bottom: 1.2rem;
   border-left: 4px solid var(--gold);
-  text-align: left;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.appointment__card:hover {
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .appointment__card h4 {
+  margin-bottom: 0.8rem;
   color: var(--black);
-  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
 }
 
 .appointment__card p {
   color: var(--charcoal);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
 }
 
 .logout__btn {
-  padding: 0.75rem 2rem;
+  padding: 1rem 2.5rem;
   background: var(--dark-charcoal);
   color: var(--cream);
   border: 2px solid var(--gold);
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 1.1rem;
+  display: block;
+  margin: 0 auto;
 }
 
 .logout__btn:hover {
   background: var(--gold);
   color: var(--black);
+  transform: translateY(-2px);
 }
 
-/* =========================
-   About Page Styling
-========================= */
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* About Page Styling */
 .about__page {
   background: var(--cream);
   padding: 8rem 2rem;
@@ -902,235 +1003,6 @@
   text-align: center;
 }
 
-/* Responsive Styling */
-@media screen and (max-width: 768px) {
-  .about__container {
-    padding: 2rem;
-  }
-
-  .about__container h1 {
-    font-size: 2.2rem;
-  }
-
-  .about__container h2 {
-    font-size: 1.6rem;
-  }
-
-  .about__container p {
-    font-size: 1.05rem;
-  }
-}
-
-/* Booking Section */
-.booking {
-  background: var(--cream);
-  padding: 8rem 0;
-  text-align: center;
-}
-
-.booking__container {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.booking h2 {
-  color: var(--black);
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
-}
-
-.booking .subtext {
-  font-size: 1.6rem;
-  margin-bottom: 3rem;
-  color: var(--charcoal);
-}
-
-/* Auth Forms */
-.auth__forms {
-  background: var(--cream);
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  margin-bottom: 2rem;
-}
-
-.auth__tab {
-  display: flex;
-  margin-bottom: 1.5rem;
-  border-bottom: 2px solid var(--gold);
-}
-
-.auth__tab-btn {
-  flex: 1;
-  padding: 1rem;
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  color: var(--charcoal);
-}
-
-.auth__tab-btn.active {
-  color: var(--gold);
-  border-bottom: 2px solid var(--gold);
-}
-
-.auth__form {
-  display: none;
-}
-
-.auth__form.active {
-  display: block;
-}
-
-.auth__form input {
-  width: 100%;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
-}
-
-.auth__form button {
-  width: 100%;
-  padding: 1rem;
-  background: var(--dark-charcoal);
-  color: var(--cream);
-  border: 2px solid var(--gold);
-  border-radius: 4px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.auth__form button:hover {
-  background: var(--gold);
-  color: var(--black);
-}
-
-/* Booking Form */
-.booking__form {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  display: none;
-  text-align: left;
-}
-
-.form__group {
-  margin-bottom: 1.5rem;
-}
-
-.form__group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: var(--black);
-  font-weight: 500;
-}
-
-.form__group input,
-.form__group select,
-.form__group textarea {
-  width: 100%;
-  padding: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
-}
-
-.form__group textarea {
-  height: 100px;
-  resize: vertical;
-}
-
-.booking__form button {
-  width: 100%;
-  padding: 1rem;
-  background: var(--dark-charcoal);
-  color: var(--cream);
-  border: 2px solid var(--gold);
-  border-radius: 4px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.booking__form button:hover {
-  background: var(--gold);
-  color: var(--black);
-}
-
-/* User Dashboard */
-.user__dashboard {
-  display: none;
-  background: var(--light-gold);
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  text-align: left;
-}
-
-.user__dashboard h3 {
-  margin-bottom: 1rem;
-  color: var(--black);
-}
-
-.appointments__list {
-  margin-bottom: 2rem;
-}
-
-.appointment__card {
-  background: var(--cream);
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border-left: 4px solid var(--gold);
-  border-radius: 6px;
-}
-
-.appointment__card h4 {
-  margin-bottom: 0.5rem;
-  color: var(--black);
-}
-
-.appointment__card p {
-  color: var(--charcoal);
-  margin-bottom: 0.25rem;
-}
-
-.logout__btn {
-  padding: 0.75rem 2rem;
-  background: var(--dark-charcoal);
-  color: var(--cream);
-  border: 2px solid var(--gold);
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.logout__btn:hover {
-  background: var(--gold);
-  color: var(--black);
-}
-
-
-.hero___container{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  height: 90%;
-  text-align: center;
-  padding: 30px;
-}
-
-
 /* Account Page Styles */
 body {
   font-family: 'Kumbh Sans', sans-serif;
@@ -1172,104 +1044,7 @@ header button:hover {
   color: var(--cream);
 }
 
-/* Main Section */
-main {
-  max-width: 1000px;
-  margin: 4rem auto;
-  padding: 0 20px;
-}
-
-main h2 {
-  font-size: 2.5rem;
-  color: var(--black);
-  margin-bottom: 3rem;
-  text-align: center;
-  font-weight: 500;
-}
-
-/* Appointments List */
-#appointmentsList {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-}
-
-.appointment__card {
-  background-color: var(--dark-charcoal);
-  color: var(--cream);
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  border: 2px solid var(--gold);
-  transition: all 0.3s ease;
-}
-
-.appointment__card h4 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  color: var(--gold);
-}
-
-.appointment__card p {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  color: var(--cream);
-}
-
-.appointment__card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-}
-
-/* Mobile Responsive */
-@media screen and (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  header h1 {
-    margin-bottom: 1rem;
-  }
-
-  #appointmentsList {
-    grid-template-columns: 1fr;
-  }
-
-  main h2 {
-    font-size: 2rem;
-  }
-
-  .appointment__card {
-    padding: 1.5rem;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  header {
-    padding: 1.5rem 2rem;
-  }
-
-  header button {
-    width: 100%;
-    text-align: center;
-  }
-
-  main {
-    margin: 2rem auto;
-  }
-
-  main h2 {
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
-  }
-
-  .appointment__card {
-    padding: 1rem;
-    font-size: 1rem;
-  }
-}
-
+/* Main Account Section */
 .account-main {
   max-width: 1000px;
   margin: 4rem auto;
@@ -1299,64 +1074,6 @@ main h2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
-}
-
-.appointment__card {
-  background-color: var(--dark-charcoal);
-  color: var(--cream);
-  padding: 2rem;
-  border-radius: 8px;
-  border: 2px solid var(--gold);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-}
-
-.appointment__card h4 {
-  color: var(--gold);
-  margin-bottom: 0.5rem;
-}
-
-.appointment__card p {
-  color: var(--cream);
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-}
-
-.appointment__card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-}
-
-.account-actions {
-  margin-top: 3rem;
-}
-
-#bookNewBtn {
-  background: var(--gold);
-  color: var(--black);
-  border: none;
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-#bookNewBtn:hover {
-  background: var(--dark-charcoal);
-  color: var(--cream);
-}
-
-@media screen and (max-width: 768px) {
-  .appointments-list {
-    grid-template-columns: 1fr;
-  }
-}
-/* Appointments Section */
-.appointments-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
   margin-top: 2rem;
 }
 
@@ -1382,45 +1099,17 @@ main h2 {
   margin-bottom: 0.5rem;
 }
 
+.appointment__card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
 /* Cancel Appointment Button */
-.cancel__btn {
-  background: var(--black);
-  color: var(--cream);
-  border: 2px solid var(--gold);
-  padding: 0.75rem 1.5rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-}
-
-.cancel__btn:hover {
-  background: var(--gold);
-  color: var(--black);
-  transform: translateY(-2px);
-}
-
-/* Responsive */
-@media screen and (max-width: 768px) {
-  .appointments-list {
-    grid-template-columns: 1fr;
-  }
-
-  .appointment__card {
-    padding: 1.5rem;
-  }
-
-  .cancel__btn {
-    width: 100%;
-    text-align: center;
-  }
-}
 .cancelApptBtn {
   padding: 8px 16px;
-  background-color: gold;      /* Gold background */
-  color: black;                /* Black text */
-  border: 2px solid black;     /* Black border for contrast */
+  background-color: var(--gold);
+  color: var(--black);
+  border: 2px solid var(--black);
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
@@ -1429,16 +1118,35 @@ main h2 {
 }
 
 .cancelApptBtn:hover {
-  background-color: black;     /* Hover: black background */
-  color: gold;                 /* Hover: gold text */
-  border: 2px solid gold;      /* Hover: gold border */
+  background-color: var(--black);
+  color: var(--gold);
+  border: 2px solid var(--gold);
 }
-/* =========================
-   Testimonials Section
-========================= */
+
+.account-actions {
+  margin-top: 3rem;
+}
+
+#bookNewBtn {
+  background: var(--gold);
+  color: var(--black);
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#bookNewBtn:hover {
+  background: var(--dark-charcoal);
+  color: var(--cream);
+}
+
+/* Testimonials Section */
 .testimonials {
-  background-color: #000; /* black background */
-  color: #b8860b; /* gold text */
+  background-color: #000;
+  color: #b8860b;
   padding: 60px 20px;
   text-align: center;
 }
@@ -1457,7 +1165,7 @@ main h2 {
 }
 
 .testimonial__card {
-  background-color: #111; /* slightly lighter black */
+  background-color: #111;
   border: 2px solid #b8860b;
   border-radius: 12px;
   padding: 30px 20px;
@@ -1484,12 +1192,10 @@ main h2 {
   color: #ffd700;
 }
 
-/* =========================
-   Terms & Services Section
-========================= */
+/* Terms & Services Section */
 .terms__page {
-  background-color: var(--cream); /* black background */
-  color: #131313; /* gold text */
+  background-color: var(--cream);
+  color: #131313;
   padding: 60px 20px;
 }
 
@@ -1522,8 +1228,70 @@ main h2 {
   margin-bottom: 12px;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .booking {
+    padding: 5rem 0;
+  }
+  
+  .booking h2 {
+    font-size: 2rem;
+  }
+  
+  .auth__forms,
+  .booking__form,
+  .user__dashboard {
+    padding: 1.5rem;
+    margin: 0 1rem;
+  }
+  
+  .auth__tab-btn {
+    padding: 1rem 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .main__btn {
+    font-size: 1.2rem;
+    padding: 12px 30px;
+  }
+
+  .about__container {
+    padding: 2rem;
+  }
+
+  .about__container h1 {
+    font-size: 2.2rem;
+  }
+
+  .about__container h2 {
+    font-size: 1.6rem;
+  }
+
+  .about__container p {
+    font-size: 1.05rem;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  header h1 {
+    margin-bottom: 1rem;
+  }
+
+  .appointments-list {
+    grid-template-columns: 1fr;
+  }
+
+  .account-main h2 {
+    font-size: 2rem;
+  }
+
+  .appointment__card {
+    padding: 1.5rem;
+  }
+
   .testimonials__wrapper {
     flex-direction: column;
     align-items: center;
@@ -1531,5 +1299,35 @@ main h2 {
 
   .testimonial__card {
     width: 90%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  header {
+    padding: 1.5rem 2rem;
+  }
+
+  header button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .account-main {
+    margin: 2rem auto;
+  }
+
+  .account-main h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .appointment__card {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  .cancelApptBtn {
+    width: 100%;
+    text-align: center;
   }
 }
