@@ -1331,3 +1331,639 @@ header button:hover {
     text-align: center;
   }
 }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Kumbh Sans', sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Color Variables for Consistency */
+:root {
+  --black: #000000;
+  --dark-charcoal: #1A1A1A;
+  --gold: #D4AF37;
+  --light-gold: #F5E6C8;
+  --cream: #F5F1E6;
+  --charcoal: #2F2F2F;
+  --white: #FFFFFF;
+}
+
+/* Base responsive units - using rem for better zoom handling */
+html {
+  font-size: 16px; /* Base font size */
+}
+
+/* Prevent horizontal scroll on zoom */
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  position: relative;
+}
+
+/* Container max-width with padding protection */
+.container {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Navbar Styles - Zoom Resistant */
+.navbar {
+  background: var(--black);
+  height: 5rem; /* Using rem instead of px */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  border-bottom: 0.125rem solid var(--gold);
+  min-height: 5rem; /* Ensure minimum touch target */
+}
+
+.navbar__container {
+  display: flex;
+  justify-content: space-between;
+  height: 5rem;
+  z-index: 1;
+  width: 100%;
+  max-width: 81.25rem; /* 1300px in rem */
+  margin: 0 auto;
+  padding: 0 1rem; /* Reduced padding for zoom safety */
+  overflow: hidden;
+}
+
+#navbar__logo {
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1.8rem; /* Smaller base size */
+  font-weight: bold;
+  letter-spacing: 0.0625rem;
+  min-width: max-content; /* Prevent logo shrinking */
+}
+
+.navbar__menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  flex-wrap: nowrap;
+}
+
+.navbar__item {
+  height: 5rem;
+  min-width: max-content;
+}
+
+.navbar__links {
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 7.8125rem; /* 125px in rem */
+  text-decoration: none;
+  height: 100%;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  padding: 0 0.5rem;
+  font-size: 1rem; /* Fixed font size */
+}
+
+/* Mobile Navigation - Zoom Proof */
+@media screen and (max-width: 60rem) { /* 960px in rem */
+  .navbar__container {
+    padding: 0 0.5rem; /* Even smaller padding on mobile */
+    max-width: 100%;
+  }
+
+  .navbar__menu {
+    display: grid;
+    grid-template-columns: 100%; /* Always full width */
+    margin: 0;
+    width: 100vw; /* Viewport width for safety */
+    position: absolute;
+    top: -1000px;
+    opacity: 0;
+    transition: all 0.5s ease;
+    z-index: -1;
+    background: var(--black);
+    left: 0;
+    right: 0;
+  }
+
+  .navbar__menu.active {
+    top: 100%;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 99;
+    height: auto;
+    font-size: 1.2rem;
+    min-height: 50vh;
+  }
+
+  #navbar__logo {
+    font-size: 1.5rem;
+    padding-left: 0;
+    max-width: 80vw; /* Prevent overflow */
+  }
+
+  .navbar__item {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .navbar__links {
+    text-align: center;
+    padding: 1.5rem;
+    width: 100%;
+    display: table;
+    font-size: 1.1rem; /* Readable even when zoomed */
+  }
+
+  .button {
+    width: 90%;
+    height: 4rem;
+    margin: 0 auto;
+    font-size: 1.1rem;
+  }
+}
+
+/* Hero Section - Zoom Resistant */
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), var(--black);
+  padding: 6rem 1rem; /* Using rem and safe padding */
+  position: relative;
+  text-align: center;
+  max-width: 100vw;
+  overflow: hidden;
+}
+
+.hero__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 75rem; /* 1200px in rem */
+  margin: 0 auto;
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.hero__heading {
+  font-size: clamp(2.5rem, 8vw, 4.5rem); /* Fluid typography */
+  margin-bottom: 1rem;
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.1875rem;
+  text-transform: uppercase;
+  line-height: 1.2;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+.hero__subheading {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  margin-bottom: 1.5rem;
+  color: var(--cream);
+  font-weight: 400;
+  letter-spacing: 0.0625rem;
+  line-height: 1.3;
+  max-width: 100%;
+}
+
+.hero__tagline {
+  font-size: clamp(1rem, 4vw, 1.4rem);
+  color: var(--light-gold);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  max-width: 37.5rem; /* 600px in rem */
+  font-weight: 300;
+  padding: 0 1rem;
+}
+
+/* Main Book Now Button - Zoom Safe */
+.main__btn {
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
+  background: var(--dark-charcoal);
+  padding: 1.125rem 2.8125rem;
+  border: none;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  color: var(--cream);
+  font-weight: 600;
+  border: 0.1875rem solid var(--gold);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.75rem;
+  min-width: min-content;
+  width: auto;
+  max-width: 100%;
+}
+
+/* Booking Section - Zoom Proof */
+.booking {
+  background: var(--cream);
+  padding: 4rem 1rem;
+  text-align: center;
+  max-width: 100vw;
+  overflow: hidden;
+}
+
+.booking__container {
+  max-width: 43.75rem; /* 700px in rem */
+  margin: 0 auto;
+  padding: 0 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.booking h2 {
+  color: var(--black);
+  font-size: clamp(2rem, 6vw, 2.8rem);
+  margin-bottom: 1rem;
+  font-weight: 500;
+  line-height: 1.3;
+  word-wrap: break-word;
+}
+
+.booking .subtext {
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  margin-bottom: 2rem;
+  color: var(--charcoal);
+  line-height: 1.6;
+  padding: 0 0.5rem;
+}
+
+/* Auth Forms - Zoom Resistant */
+.auth__forms {
+  background: white;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: 0.9375rem;
+  box-shadow: 0 1.25rem 2.5rem rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+  border: 0.125rem solid var(--light-gold);
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.auth__tab {
+  display: flex;
+  margin-bottom: 2rem;
+  border-radius: 0.625rem;
+  overflow: hidden;
+  background: var(--cream);
+  min-height: 3.5rem;
+}
+
+.auth__tab-btn {
+  flex: 1;
+  padding: clamp(1rem, 2vw, 1.3rem);
+  background: none;
+  border: none;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  color: var(--charcoal);
+  min-height: 3.5rem;
+}
+
+.auth__form {
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+
+.auth__form.active {
+  display: block;
+}
+
+.auth__form input {
+  width: 100%;
+  padding: 1.2rem;
+  margin-bottom: 1.3rem;
+  border: 0.125rem solid #e0e0e0;
+  border-radius: 0.5rem;
+  font-size: 1rem; /* Fixed size to prevent zoom */
+  transition: all 0.3s ease;
+  background: var(--cream);
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/* Booking Form - Zoom Safe */
+.booking__form {
+  background: white;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: 0.9375rem;
+  box-shadow: 0 1.25rem 2.5rem rgba(0,0,0,0.1);
+  display: none;
+  text-align: left;
+  border: 0.125rem solid var(--light-gold);
+  animation: slideUp 0.5s ease;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.booking__form.active {
+  display: block;
+}
+
+.form__group {
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.form__group label {
+  display: block;
+  margin-bottom: 0.8rem;
+  color: var(--black);
+  font-weight: 600;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  line-height: 1.4;
+}
+
+.form__group input,
+.form__group select,
+.form__group textarea {
+  width: 100%;
+  padding: 1.2rem;
+  border: 0.125rem solid #e0e0e0;
+  border-radius: 0.5rem;
+  font-size: 1rem; /* Fixed size */
+  transition: all 0.3s ease;
+  background: var(--cream);
+  font-family: 'Kumbh Sans', sans-serif;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.form__group textarea {
+  height: 8.75rem; /* 140px in rem */
+  resize: vertical;
+  min-height: 6.25rem; /* 100px in rem */
+}
+
+.booking__form button {
+  width: 100%;
+  padding: 1.3rem;
+  background: var(--dark-charcoal);
+  color: var(--cream);
+  border: 0.125rem solid var(--gold);
+  border-radius: 0.5rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.2rem);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  margin-top: 1rem;
+  min-height: 3.5rem;
+  box-sizing: border-box;
+}
+
+/* User Dashboard - Zoom Resistant */
+.user__dashboard {
+  display: none;
+  background: white;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: 0.9375rem;
+  box-shadow: 0 1.25rem 2.5rem rgba(0,0,0,0.1);
+  text-align: left;
+  border: 0.125rem solid var(--light-gold);
+  animation: fadeIn 0.5s ease;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.user__dashboard.active {
+  display: block;
+}
+
+.user__dashboard h3 {
+  margin-bottom: 2rem;
+  color: var(--black);
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  text-align: center;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.appointments__list {
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.appointment__card {
+  background: var(--cream);
+  padding: clamp(1rem, 3vw, 2rem);
+  margin-bottom: 1.5rem;
+  border-left: 0.3125rem solid var(--gold);
+  border-radius: 0.625rem;
+  transition: all 0.3s ease;
+  border: 0.125rem solid var(--light-gold);
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.appointment__card h4 {
+  margin-bottom: 1rem;
+  color: var(--black);
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.appointment__card p {
+  color: var(--charcoal);
+  margin-bottom: 0.7rem;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  line-height: 1.4;
+}
+
+/* Critical Mobile Breakpoints with REM */
+@media screen and (max-width: 48rem) { /* 768px */
+  .hero {
+    padding: 4rem 0.5rem;
+  }
+  
+  .hero__container {
+    padding: 0.5rem;
+  }
+  
+  .booking {
+    padding: 3rem 0.5rem;
+  }
+  
+  .booking__container {
+    padding: 0 0.5rem;
+  }
+  
+  .auth__forms,
+  .booking__form,
+  .user__dashboard {
+    padding: 1.5rem 1rem;
+    margin: 0;
+  }
+  
+  .auth__tab {
+    flex-direction: column;
+    min-height: auto;
+  }
+  
+  .auth__tab-btn {
+    min-height: 3rem;
+  }
+  
+  /* Ensure form elements don't overflow */
+  .form__group input,
+  .form__group select,
+  .form__group textarea {
+    font-size: 16px; /* Critical for iOS zoom prevention */
+    max-width: 100%;
+  }
+}
+
+/* Extra Small Devices with REM */
+@media screen and (max-width: 30rem) { /* 480px */
+  .navbar {
+    height: 4rem;
+    min-height: 4rem;
+  }
+  
+  .navbar__container {
+    height: 4rem;
+  }
+  
+  .hero__heading {
+    font-size: 2rem;
+  }
+  
+  .hero__subheading {
+    font-size: 1.3rem;
+  }
+  
+  .hero__tagline {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+  
+  .main__btn {
+    width: 100%;
+    max-width: 17.5rem; /* 280px */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Force single column layout on very small screens */
+  .auth__forms,
+  .booking__form {
+    padding: 1rem 0.5rem;
+  }
+  
+  .form__group {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Ultra-small devices (like very zoomed in) */
+@media screen and (max-width: 20rem) { /* 320px */
+  .navbar__container {
+    padding: 0 0.25rem;
+  }
+  
+  #navbar__logo {
+    font-size: 1.2rem;
+  }
+  
+  .hero {
+    padding: 3rem 0.25rem;
+  }
+  
+  .booking {
+    padding: 2rem 0.25rem;
+  }
+  
+  .auth__forms,
+  .booking__form,
+  .user__dashboard {
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .form__group input,
+  .form__group select,
+  .form__group textarea {
+    padding: 0.8rem;
+  }
+}
+
+/* Zoom-specific fixes */
+@media (max-width: 480px) and (orientation: portrait) {
+  /* Prevent layout breaking on portrait zoom */
+  .booking__container,
+  .auth__forms,
+  .booking__form {
+    min-width: 0; /* Allow shrinking */
+    width: 100%;
+  }
+}
+
+/* High zoom level protection */
+@media (max-width: 360px) {
+  .hero__heading {
+    font-size: 1.8rem;
+  }
+  
+  .hero__subheading {
+    font-size: 1.1rem;
+  }
+  
+  .booking h2 {
+    font-size: 1.5rem;
+  }
+  
+  .auth__tab-btn {
+    font-size: 0.9rem;
+    padding: 0.8rem 0.5rem;
+  }
+}
+
+/* Ensure content never overflows viewport */
+.booking__container > *,
+.auth__forms > *,
+.booking__form > *,
+.user__dashboard > * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(0.9375rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(1.5625rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
